@@ -50,29 +50,6 @@ class DatabaseHelper {
     );
     return db;
   }
-
-  // Method untuk insert data ke tabel
-  Future<int> insertData(Data data) async {
-    final db = await database;
-    return db!.insert(tableNama, data.toMap());
-  }
-
-  // Method untuk ambil semua data dari tabel
-  Future<List<Data>> getDataList() async {
-    final db = await database;
-    final List<Map<String, dynamic>> maps = await db!.query(tableNama);
-    return List.generate(maps.length, (i) {
-      return Data(
-        id: maps[i][columnId],
-        nik: maps[i][columnNIK],
-        nama: maps[i][columnNama],
-        noHp: maps[i][columnNoHp],
-        tglLahir: maps[i][columnTglLahir],
-        alamat: maps[i][columnAlamat],
-        jenisKelamin: maps[i][columnJenisKelamin],
-      );
-    });
-  }
 }
 
 class Data {
